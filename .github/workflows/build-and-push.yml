@@ -53,6 +53,8 @@ jobs:
           VERSION="${{ steps.get_routeros_version.outputs.version }}"
           OWNER="evilfreelancer"
           REPO="docker-routeros"
+          OWNER2="828668"
+          REPO2="docker-ros"
           
           # Set up Docker Buildx
           docker buildx create --use --name routeros_builder
@@ -60,8 +62,8 @@ jobs:
           # Build and push images
           docker buildx build --push \
             --platform linux/amd64,linux/arm64,linux/arm/v7 \
-            --tag $OWNER/$REPO:$VERSION \
-            --tag $OWNER/$REPO:latest \
+            --tag $OWNER2/$REPO2:$VERSION \
+            --tag $OWNER2/$REPO2:latest \
             --build-arg ROUTEROS_VERSION=$VERSION .
 
       - name: Skip build
